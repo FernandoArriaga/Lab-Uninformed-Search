@@ -101,7 +101,8 @@
 	        h+=(abs(tempc[i].size()-tempg[i].size()));
 	    }
 	
-
+		if(h%2!=0)
+			h+=1;
 	    return h;
 	}
 	
