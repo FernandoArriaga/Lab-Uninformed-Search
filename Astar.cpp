@@ -80,7 +80,7 @@
 	         if(!(tempg[i].top()=='X'||tempg[i].top()=='x'))
 	         {
 	            if (tempc[i].top()!=tempg[i].top())
-	                h+=3;
+	                h+=2;
 	
 
 	            tempc[i].pop();
