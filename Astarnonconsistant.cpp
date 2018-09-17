@@ -1,11 +1,11 @@
-#include <stdio.h>
+#include<stdio.h>
 #include <stdlib.h>
 #include <string>
 #include <vector>
 #include <iostream>
 #include <queue>
 #include <stack>
-#include <list>
+#include<list>
 bool flag;
 class statenode {
 public:
@@ -14,7 +14,6 @@ unsigned int Nstart;
 unsigned int Nfinish;
 statenode* parent;
 std::vector<std::stack<char> > stacks;
-//std::list<statenode*> children;
 void cpc(void)
 {
     this->pathcost=(parent->pathcost)+1+abs(Nstart-Nfinish);
@@ -23,23 +22,12 @@ void cpc(void)
 friend class UCS;
 };
 
-unsigned int hn(statenode* p, statenode* gs)
+unsigned int hn(statenode current, statenode goal)
 {
     int h=0;
-    statenode current;
-    statenode goal;
     std::stack<char> buff;
     std::vector<std::stack<char> >tempc;
     std::vector<std::stack<char> >tempg;
-
-    for(unsigned int i=0; i < p->stacks.size(); i++)
-{
-current.stacks.push_back(p->stacks[i]);
-}
- for(unsigned int i=0; i < gs->stacks.size(); i++)
-{
-goal.stacks.push_back(gs->stacks[i]);
-}
 
  for(unsigned int i=0; i < current.stacks.size(); i++)
 {
@@ -73,7 +61,7 @@ goal.stacks[i].pop();
          if(!(tempg[i].top()=='X'||tempg[i].top()=='x'))
          {
             if (tempc[i].top()!=tempg[i].top())
-                h+=3;
+                h+=2;
 
             tempc[i].pop();
 
@@ -95,19 +83,8 @@ goal.stacks[i].pop();
 }
 
 
-bool comp (statenode* curr, statenode* gs)
+bool comp (statenode current, statenode goal)
 {
-statenode current;
-    statenode goal;
-    for(unsigned int i=0; i < curr->stacks.size(); i++)
-{
-current.stacks.push_back(curr->stacks[i]);
-}
- for(unsigned int i=0; i < gs->stacks.size(); i++)
-{
-goal.stacks.push_back(gs->stacks[i]);
-}
-
 
     for (unsigned int i=0; i<current.stacks.size();i++)
     {
@@ -150,9 +127,6 @@ goal.stacks.push_back(gs->stacks[i]);
 
 
 
-
-
-
 statenode* shift(statenode* node, int start, int finish)
 {
 statenode* next=new statenode;
@@ -187,7 +161,7 @@ unsigned int lowestpathcost=4294967295;;
 
  for (unsigned int i=0;i<Pqueue.size();i++)
  {
-     pcost=(Pqueue[i]->pathcost)+hn(Pqueue[i],this->Goalstate);
+     pcost=(Pqueue[i]->pathcost)+hn(*Pqueue[i],*(this->Goalstate));
      if(pcost<lowestpathcost)
      {
          lowestpathcost=pcost;
@@ -209,7 +183,7 @@ bool visit (statenode* p)
 {
     for (unsigned int i =0;i < Visited.size();i++)
     {
-        if (comp(Visited[i],p))
+        if (comp(*(Visited[i]),*p))
         {
             return true;}
     }
@@ -325,7 +299,7 @@ if (!flag)
 {
 SS.Pqueue.push_back(SS.Instate);
 P = SS.fn();
-while(!comp(P,SS.Goalstate))
+while(!comp(*P,*(SS.Goalstate)))
 {
     SS.expand(P);
     P=SS.fn();
