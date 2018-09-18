@@ -19,7 +19,7 @@ void cpc(void)
     this->pathcost=(parent->pathcost)+1+abs(Nstart-Nfinish);
 }
 
-friend class UCS;
+friend class Astar;
 };
 
 unsigned int hn(statenode current, statenode goal)
@@ -143,7 +143,7 @@ next->cpc();
 return next;
 }
 
-class UCS {
+class Astar {
     public:
 unsigned int height;
 statenode* Instate;
@@ -278,7 +278,7 @@ void solution(statenode* temp)
 
 int main(int argc, char* argv[]) {
 std::stack<char> out;
-UCS SS;
+Astar SS;
 statenode* P;
 
 std::string line;
