@@ -19,7 +19,7 @@ void cpc(void)
     this->pathcost=(parent->pathcost)+1+abs(Nstart-Nfinish);
 }
 
-friend class UCS;
+friend class Astarnonconsistent;
 };
 
 unsigned int hn(statenode current, statenode goal)
