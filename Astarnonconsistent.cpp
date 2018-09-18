@@ -143,7 +143,7 @@ next->cpc();
 return next;
 }
 
-class UCS {
+class Astarnonconsistent {
     public:
 unsigned int height;
 statenode* Instate;
@@ -278,7 +278,7 @@ void solution(statenode* temp)
 
 int main(int argc, char* argv[]) {
 std::stack<char> out;
-UCS SS;
+Astarnonconsistent SS;
 statenode* P;
 
 std::string line;
