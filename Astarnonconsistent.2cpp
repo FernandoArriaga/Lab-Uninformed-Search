@@ -61,7 +61,7 @@ goal.stacks[i].pop();
          if(!(tempg[i].top()=='X'||tempg[i].top()=='x'))
          {
             if (tempc[i].top()!=tempg[i].top())
-                h+=2;
+                h+=3;
 
             tempc[i].pop();
 
@@ -74,9 +74,9 @@ goal.stacks[i].pop();
         if(!tempg[i].empty())
         {
         if(!(tempg[i].top()=='X'||tempg[i].top()=='x'))
-        h+=2*(abs(tempc[i].size()-tempg[i].size()));
+        h+=(abs(tempc[i].size()-tempg[i].size()));
         }
-        h+=2*(abs(tempc[i].size()-tempg[i].size()));
+        h+=(abs(tempc[i].size()-tempg[i].size()));
     }
 
     return h;
