@@ -199,8 +199,8 @@ if(sbuffer.size()>maxs)
 temp->stacks.push_back(sbuffer);
 
 temp->parent=0;
-temp->Nstart=0;
-temp->Nfinish=0;
+temp->Nstart=temp->stacks.size();
+temp->Nfinish=temp->stacks.size();
 temp->pathcost=0;
 return temp;
 }
