@@ -1,0 +1,3 @@
+#!/bin/sh
+g++ Astarnonconsistent1.cpp -o program
+./program
