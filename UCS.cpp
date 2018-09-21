@@ -7,6 +7,7 @@
 #include <stack>
 #include<list>
 bool flag;
+
 class statenode {
 public:
 int pathcost;
